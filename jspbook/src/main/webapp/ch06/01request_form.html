@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Request Form</title>
+<script>
+	document.cookie = "test.ok";
+</script>
+</head>
+<body>
+<div align="center">
+	<h2>Request_Form</h2>
+	<hr />
+	<form action="01request_result.jsp" method="post">
+		<table width="400" border="1" cellspacing="1" cellpadding="5" >
+			<tr>
+				<td>이름</td>
+				<td>
+					<input type="text" name="name" size="10" required />
+				</td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td>
+					<select name="job" id="">
+						<option selected>무직</option>
+						<option>회사원</option>
+						<option>개발자</option>
+						<option>전문직</option>
+						<option>학생</option>
+						<option>기타</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>관심분야</td>
+				<td>
+					<input type="checkbox" name="favorite" value="스포츠" />스포츠
+					<input type="checkbox" name="favorite" value="IT" />IT
+					<input type="checkbox" name="favorite" value="사회" />사회	
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="확인"/>
+					<input type="reset" value="취소"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>
