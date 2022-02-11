@@ -25,8 +25,7 @@ public class AddrBean {
 			  Context envContext=(Context)initContext.lookup("java:/comp/env");
 			  DataSource ds=(DataSource)envContext.lookup("jdbc/xe");
 			  //연결 완료
-			  conn=ds.getConnection();
-			
+			  conn=ds.getConnection();			
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -54,6 +53,7 @@ public class AddrBean {
 		try {
 			
 			pstmt=conn.prepareStatement(sql);
+			System.out.println("Update Starts");
 			//매핑
 			pstmt.setString(1, addrbook.getAb_name());
 			pstmt.setString(2, addrbook.getAb_email());

@@ -26,6 +26,7 @@
 		else
 			throw new Exception("DB 입력오류");
 	}
+	
 	// 주소록 수정 페이지 요청인 경우
 	else if(action.equals("edit")) {
 		AddrBook abook = ab.getDB(addrbook.getAb_id());
@@ -37,6 +38,7 @@
 			pageContext.forward("addrbook_edit_form.jsp");
 		}
 	}
+	
 	// 주소록 수정 등록 요청인 경우
 	else if(action.equals("update")) {
 			if(ab.updateDB(addrbook)) {
@@ -45,6 +47,7 @@
 			else
 				throw new Exception("DB 갱신오류");
 	}
+	
 	// 주소록 삭제 요청인 경우
 	else if(action.equals("delete")) {
 		if(ab.deleteDB(addrbook.getAb_id())) {
@@ -53,6 +56,7 @@
 		else
 			throw new Exception("DB 삭제 오류");
 	}
+	
 	else {
 		out.println("<script>alert('action 파라미터를 확인해 주세요!!!')</script>");
 	}

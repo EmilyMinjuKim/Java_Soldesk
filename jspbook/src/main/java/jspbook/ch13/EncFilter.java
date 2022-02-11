@@ -1,0 +1,38 @@
+package jspbook.ch13;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpFilter;
+
+@WebFilter("*.jsp")	//모든 jsp파일에 대하여
+public class EncFilter extends HttpFilter implements Filter {
+	
+	private String encoding;
+	
+	public EncFilter() {
+		
+	}
+
+	public void init(FilterConfig fConfig) throws ServletException {
+		this.encoding = fConfig.getServletContext().getInitParameter("encoding");	//web.xml -> utf-8로 선언해둠.
+	}
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		if(request.getCharacterEncoding() == null) {
+			request.setCharacterEncoding(encoding);
+			chain.doFilter(request, response);	//모든 요청과 모든 응답에 대하여
+		}
+		
+	}
+
+	public void destroy() {
+		
+	}
+
+}

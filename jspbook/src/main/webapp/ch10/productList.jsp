@@ -12,7 +12,7 @@
 	<hr />
 	
 	<form action="productSel.jsp" method="post">
-		<jsp:useBean id="produ" class="w" scope="session" />
+		<jsp:useBean id="product" class="jspbook.ch10.Product" scope="session" />
 		<select name="sel">
 			<%-- 		
 			<%

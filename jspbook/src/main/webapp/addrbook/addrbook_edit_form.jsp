@@ -1,67 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jspbook.addrbook.*" errorPage="addrbook_error.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="addrbook_error.jsp" import="jspbook.addrbook.*"%>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="addrbook.css" />
+<link rel="stylesheet" href="addrbook.css" type="text/css" media="screen" />
+
 <script type="text/javascript">
-	function delCheck() {
-		result = confirm("정말로 삭제하시겠습니까?");
-		if(result==true){
-			document.form1.action.value = "delete";
+	function delcheck() {
+		result = confirm("정말로 삭제하시겠습니까 ?");
+	
+		if(result == true){
+			document.form1.action.value="delete";
 			document.form1.submit();
-		} else{
-			return;
 		}
-	};
+		else
+			return;
+	}
 </script>
-<title>addrbook_edit_form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>주소록:수정화면</title>
 </head>
-<jsp:useBean id="ab" class="jspbook.addrbook.AddrBook" scope="request" />
+
+<jsp:useBean id="ab" scope="request" class="jspbook.addrbook.AddrBook" />
+
 <body>
 <div align="center">
-<h2>주소록:수정화면</h2>
-<hr />
-[<a href="addrbook_control.jsp?action=list">주소록 목록으로</a>]<p/>
-
-<form name="form1" action="addrbook_control.jsp" method="post">
-	<input type="hidden" name="action" value="update" />
+<H2>주소록:수정화면 </H2>
+<HR>
+[<a href=addrbook_control.jsp?action=list>주소록 목록으로</a>] <p>
+<form name=form1 method=post action=addrbook_control.jsp>
+	<input type=hidden name="ab_id" value="<%=ab.getAb_id()%>">
+	<input type=hidden name="action" value="update">
+	
 	<table border="1">
-		<tr>
-			<th>아이디</th>
-			<td><%=ab.getAb_id() %></td>
-		</tr>
-		<tr>
-			<th>이름</th>
-			<td><input type="text" name="ad_name" value="<%=ab.getAb_name() %>" /></td>
-		</tr>
-		<tr>
-			<th>이메일</th>
-			<td><input type="text" name="ad_email" value="<%=ab.getAb_email() %>" /></td>
-		</tr>
-		<tr>
-			<th>회사</th>
-			<td><input type="text" name="ad_comdept" value="<%=ab.getAb_comdept() %>" /></td>
-		</tr>
-		<tr>
-			<th>생년월일</th>
-			<td><input type="text" name="ad_birth" value="<%=ab.getAb_birth() %>" /></td>
-		</tr>
-		<tr>
-			<th>전화번호</th>
-			<td><input type="text" name="ad_tel" value="<%=ab.getAb_tel() %>" /></td>
-		</tr>
-		<tr>
-			<th>메모</th>
-			<td><input type="text" name="ad_memo" value="<%=ab.getAb_memo() %>" /></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="저장" />
-				<input type="reset" value="취소" />
-				<input type="button" value="삭제" onclick="delCheck()" />
-			</td>
-		</tr>
+	  <tr>
+	    <th>이 름</th>
+	    <td><input type="text" name="ab_name" value="<%=ab.getAb_name() %>"></td>
+	  </tr>
+	  <tr>
+	    <th>email</th>
+	    <td><input type="text" name="ab_email" value="<%=ab.getAb_email() %>"></td>
+	  </tr>
+	    <tr>
+	    <th>전화번호</th>
+	    <td><input type="text" name="ab_tel" value="<%=ab.getAb_tel() %>"></td>
+	  </tr>
+	      <tr>
+	    <th>생 일</th>
+	    <td><input type="date" name="ab_birth" value="<%=ab.getAb_birth() %>"></td>
+	  </tr>
+	  <tr>
+	    <th>회 사</th>
+	    <td><input type="text" name="ab_comdept" value="<%=ab.getAb_comdept()%>"></td>
+	  </tr>
+	  <tr>
+	    <th>메 모</th>
+	    <td><input type="text" name="ab_memo" value="<%=ab.getAb_memo() %>"></td>
+	  </tr>
+	  <tr>
+	    <td colspan=2 align=center>
+		    <input type=submit value="저장">
+		    <input type=reset value="취소">
+		    <input type="button" value="삭제" onClick="delcheck()">
+	    </td>
+	</tr>
 	</table>
 </form>
 
